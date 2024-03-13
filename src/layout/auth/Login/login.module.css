@@ -1,0 +1,48 @@
+.login_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--color-primary);
+}
+
+.login_form {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.login_form>h1 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-block: 0;
+}
+
+.login_form>form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.login_form>form>button {
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+}
+
+.disabled_button {
+    background-color: var(--color-gray);
+    color: var(--color-black);
+    cursor: not-allowed;
+}
+
+.enabled_button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    cursor: pointer;
+}

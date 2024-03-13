@@ -1,0 +1,153 @@
+.dashboard_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard_body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #F0F2F5;
+    font-family: Georgia, serif;
+}
+
+.dashboard_body_container {
+    flex: 1;
+}
+
+.dashboard_content {
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.dashboard_content_container {
+    margin: 1em;
+    background-color: var(--color-white);
+    border: none;
+    border-radius: 10px;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    overflow: auto;
+}
+
+.dashboard_content_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}
+
+.dashboard_content_header>h2 {
+    font-size: 2em;
+    font-weight: 700;
+    margin-block: 0;
+    color: var(--color-black);
+}
+
+.dashboard_content_container>p {
+    font-size: 1em;
+    font-weight: 400;
+    color: var(--color-black);
+}
+
+.dashboard_content_cards {
+    gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+table {
+    width: 100%;
+    margin: auto;
+}
+
+tr,
+thead {
+    color: inherit;
+    display: table-row;
+    vertical-align: middle;
+    outline: 0px;
+}
+
+th {
+    text-align: left;
+    padding: 12px 24px;
+    background: transparent;
+    box-shadow: none;
+    color: var(--color-primary);
+    font-size: 0.9em;
+    font-weight: 700;
+    border-bottom: 0.05rem solid rgb(240, 242, 245);
+}
+
+tbody {
+    display: table-row-group;
+}
+
+td {
+    text-align: left;
+    padding: 12px 24px;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 0.05rem solid rgb(240, 242, 245);
+    font-size: 0.75rem;
+    color: var(--color-black);
+    font-weight: 400;
+}
+
+td>a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+td>img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.handle_more_button {
+    font-size: 1em;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    color: var(--color-primary);
+}
+
+
+@media only screen and (max-width: 768px) {
+    .dashboard_content_container {
+      margin: 0.5em;
+      padding: 1em; 
+    }
+  
+    .dashboard_content_header > h2 {
+      font-size: 1.5em; 
+    }
+  
+    .dashboard_content_cards {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    }
+  
+    .dashboard_content_container>p {
+      font-size: 0.8em; /* Ajuster la taille du texte des cartes pour les petits écrans */
+    }
+  
+    td {
+      padding: 8px 16px;
+      font-size: 0.65rem; 
+    }
+  
+    td > img {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .handle_more_button {
+      font-size: 0.8em; 
+    }
+  }
