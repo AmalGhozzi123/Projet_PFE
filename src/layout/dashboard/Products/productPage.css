@@ -1,0 +1,72 @@
+/* productPage.css */
+
+/* Style général pour les inputs et select */
+.product-page-inputs input[type="text"],
+.product-page-inputs input[type="number"],
+.product-page-inputs select {
+    width: 100%;
+    padding: 10px;
+    /* Augmentation de la taille du padding pour un aspect plus spacieux */
+    border: 2px solid #040e57;
+    /* Bordure plus épaisse et couleur verte */
+    border-radius: 6px;
+    /* Bordures arrondies */
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    /* Légère augmentation de la marge inférieure */
+    font-size: 16px;
+    /* Taille de police légèrement plus grande */
+}
+
+/* Style au survol pour les inputs et select */
+.product-page-inputs input[type="text"]:hover,
+.product-page-inputs input[type="number"]:hover,
+.product-page-inputs select:hover {
+    border-color: #eff53a;
+    /* Changement de couleur de bordure au survol */
+}
+
+/* Style au focus pour les inputs et select */
+.product-page-inputs input[type="text"]:focus,
+.product-page-inputs input[type="number"]:focus,
+.product-page-inputs select:focus {
+    outline: none;
+    /* Suppression de l'outline au focus */
+    border-color: #eff53a;
+    /* Changement de couleur de bordure au focus */
+    box-shadow: 0 0 5px #eff53a
+        /* Légère ombre pour mettre en évidence le focus */
+}
+
+/* Style pour les options du select */
+.product-page-inputs select option {
+    padding: 10px;
+    /* Ajout de padding pour un meilleur espacement entre les options */
+}
+
+.product_box {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #0f0740;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 300px;
+    width: 100px;
+}
+
+.discount_rectangle {
+    position: absolute;
+    width: 100%;
+    /* Ajustez la largeur selon vos besoins */
+    height: 100%;
+    /* Ajustez la hauteur selon vos besoins */
+    background-color: rgba(255, 0, 0, 0.5);
+    /* Couleur du rectangle avec transparence */
+    z-index: 1;
+    /* Assurez-vous que le rectangle est au-dessus de l'image */
+}
