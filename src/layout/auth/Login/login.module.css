@@ -4,23 +4,45 @@
     align-items: center;
     height: 100vh;
     background-color: var(--color-primary);
+    font-family: Georgia, serif;
+
 }
 
 .login_form {
     display: flex;
-    width: 50%;
+    width: 40%;
     flex-direction: column;
     gap: 1em;
     padding: 2em;
     background-color: var(--color-white);
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 0px #eff53a;
+    font-family: Georgia, serif;
+
+
+}
+
+.password_icon {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 520px;
+    bottom: 350px;
+}
+
+.user_icon {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    right: 520px;
+    bottom: 405px;
 }
 
 .login_form>h1 {
     text-align: center;
     color: var(--color-primary);
     margin-block: 0;
+    color: rgb(6, 40, 141);
 }
 
 .login_form>form {
@@ -33,6 +55,8 @@
     padding: 1em;
     border: none;
     border-radius: 5px;
+    font-family: Georgia, serif;
+
 }
 
 .disabled_button {
@@ -45,4 +69,22 @@
     background-color: var(--color-primary);
     color: var(--color-white);
     cursor: pointer;
+}
+
+
+
+/* login.module.css */
+
+.login-page-inputs input[type="text"],
+.login-page-inputs input[type="password"],
+.login-page-inputs button {
+    /* Ajoutez vos styles ici */
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-family: Georgia, serif;
+
 }

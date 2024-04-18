@@ -6,4 +6,6 @@ export class ROUTES {
   static readonly PRODUCTS = "/dashboard/products";
   static readonly NEWPRODUCTS = "/dashboard/newproduct";
   static readonly UPDATE = "/dashboard/update";
+  static readonly  DELETEDPRODUCTS= "/dashboard/deletedproducts";
+  static readonly  PRODUCTDETAILS= "/dashboard/productdetails";
 }

@@ -19,15 +19,36 @@ connection.once("open", () => {
 
 const productSchema = new mongoose.Schema({
   Ref: String,
-  Link: String,
+  Designation: String,
   Price: String,
-  Brand: String,
   Stock: String,
   Image: String,
-  Designation: String,
+  Brand: String,
+  Company: String,
+  Link: String,
 });
 
 const Product = mongoose.model("Product", productSchema);
+
+const competitorSchema = new mongoose.Schema({
+  Logo: {
+    type: String,
+    required: true,
+ 
+  },
+  Name: {
+    type: String,
+    required: true,
+  
+  },
+  Link: {
+    type: String,
+    required: true,
+   
+  },
+});
+
+const Competitor = mongoose.model("Competitor", competitorSchema);
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -38,24 +59,78 @@ app.use((req, res, next) => {
 
 app.get("/api/products", async (req, res) => {
   try {
-    const {
-      page = 1,
-      pageSize = 50,
-      sort_by = 'add_date',
-      sort_order = 'desc',
-      // other query parameters...
-    } = req.query;
-
-    const skip = (page - 1) * pageSize;
-
-    const products = await Product.find()
-      .skip(skip)
-      .limit(parseInt(pageSize))
-      .sort({ [sort_by]: sort_order });
-
+    const products = await Product.find();
     res.json(products);
   } catch (error) {
     console.error("Error fetching products:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+
+
+
+app.get("/api/products-by-reference/:reference", async (req, res) => {
+  try {
+    const { reference } = req.params;
+    const products = await Product.find({ Ref: reference });
+    if (products.length === 0) {
+      res.status(404).json({ message: "Aucun produit trouvé pour la référence spécifiée." });
+    } else {
+      res.json(products);
+    }
+  } catch (error) {
+    console.error("Error fetching products by reference:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/api/competitors", async (req, res) => {
+  try {
+    const competitors = await Competitor.find();
+    res.json(competitors);
+  } catch (error) {
+    console.error("Error fetching competitors:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.post("/api/competitors", async (req, res) => {
+  try {
+    const { Logo, Name, Link } = req.body;
+    const competitor = new Competitor({ Logo, Name, Link });
+    const savedCompetitor = await competitor.save();
+    res.status(201).json(savedCompetitor);
+  } catch (error) {
+    console.error("Error adding competitor:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+app.delete("/api/competitors/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Competitor.findByIdAndDelete(id);
+    res.status(204).end();
+  } catch (error) {
+    console.error("Error deleting competitor:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+
+
+app.put("/api/competitors/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { Logo, Name, Link } = req.body;
+    const updatedCompetitor = await Competitor.findByIdAndUpdate(id, { Logo, Name, Link }, { new: true });
+    res.json(updatedCompetitor);
+  } catch (error) {
+    console.error("Error updating competitor:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });

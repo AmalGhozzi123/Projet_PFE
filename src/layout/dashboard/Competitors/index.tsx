@@ -1,61 +1,111 @@
-//src/layout/dashboard/Competitors/index.tsx
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
+import styles from '../dashboard.module.css';
+import { Input } from '@components';
+import { DashboardComponents } from '@components';
 
-import styles from "../dashboard.module.css";
-import { competitors as all_competitors, products } from "@constants";
-import { CompetitorRo } from "@models";
-import { Link } from "react-router-dom";
-import { ROUTES } from "@utils";
+interface Competitor {
+  _id?: string;
+  Logo: string;
+  Name: string;
+  Link: string;
+}
 
-export const Competitors = () => {
-  const [competitors, setCompetitors] =
-    useState<CompetitorRo[]>(all_competitors);
+const Competitors: React.FC = () => {
+  const [search, setSearch] = useState<string>('');
+  const [competitors, setCompetitors] = useState<Competitor[]>([]);
+  const [loadingCompetitors, setLoadingCompetitors] = useState<boolean>(true);
+
+  const [selectedCompetitor, setSelectedCompetitor] = useState<Competitor | null>(null);
+
+  useEffect(() => {
+    fetchCompetitors();
+  }, []);
+
+  const fetchCompetitors = useCallback(() => {
+    setLoadingCompetitors(true);
+
+    axios
+      .get('http://localhost:5000/api/competitors')
+      .then((response) => {
+        const data: Competitor[] = response.data;
+        setCompetitors(data);
+        setLoadingCompetitors(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching competitors:', error);
+        setLoadingCompetitors(false);
+      });
+  }, []);
+
+  const handleSearch = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setSearch(value);
+    if (value === "") {
+      fetchCompetitors();
+    } else {
+      const filteredCompetitors = competitors.filter((competitor: Competitor) =>
+        competitor.Name.toLowerCase().includes(value.toLowerCase())
+      );
+      setCompetitors(filteredCompetitors);
+    }
+  }, [competitors, fetchCompetitors]);
+
 
   return (
-    <div className={styles.dashboard_content}>
-      <div className={styles.dashboard_content_container}>
-        <div className={styles.dashboard_content_header}>
-          <h2>Concurrents</h2>
+    <div className={`${styles.dashboard_content} products_page product-page-inputs`}>
+    <div className={styles.dashboard_content_container}>
+      <div className={styles.dashboard_content_header}>
+      <Input
+            type="text"
+            value={search}
+            label="Chercher.."
+            onChange={(e) => handleSearch(e)}
+          />
+           <img
+      src="/icons/search.gif"
+      className={styles.search_icon}/>
         </div>
 
-        <p>Tous les concurrents de votre entreprise sont listés ci-dessous.</p>
+        <div className={styles.dashboard_cards}>
+          <DashboardComponents.StatCard
+            title="Tous Les Concurrents"
+            value={competitors.length}
+            icon="/icons/competitor.svg"
+      
+          />
+        </div>
+
+  
 
         <table>
           <thead>
-            <th>Logo</th>
-            <th>Nom du société</th>
-            <th>Lien</th>
-            <th>N° Produits</th>
+              <th>Logo</th>
+              <th>Nom</th>
+              <th>Lien</th>
           </thead>
-
           <tbody>
-            {competitors.map((competitor) => (
-              <tr key={competitor.id}>
+            {competitors.map((competitor: Competitor, index: number) => (
+              <tr key={index}>
                 <td>
-                  <Link to={ROUTES.PRODUCTS}>
-                    <img
-                      src={competitor.image}
-                      alt={competitor.name}
-                      style={{ height: 30, objectFit: "contain" }}
-                    />
-                  </Link>
+                  <img src={competitor.Logo} alt={competitor.Name} />
                 </td>
+                <td>{competitor.Name}</td>
                 <td>
-                  <Link to={ROUTES.PRODUCTS}>{competitor.name}</Link>
-                </td>
-                <td>
-                  <a href={competitor.link} target="_blank" rel="noreferrer">
-                    {competitor.link}
+                  <a href={competitor.Link} target="_blank" rel="noopener noreferrer">
+                    {competitor.Link}
                   </a>
                 </td>
-                <td>
-                  <Link to={ROUTES.PRODUCTS}>{products.length}</Link>
-                </td>
+               
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+
     </div>
   );
 };
+
+export default Competitors;

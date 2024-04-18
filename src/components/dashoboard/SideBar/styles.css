@@ -7,6 +7,8 @@
     justify-content: center;
     position: sticky;
     background-color: var(--color-primary);
+    font-family: Georgia, serif;
+
 }
 
 .sidebar-logo-container {
@@ -82,4 +84,20 @@
 
 .sidebar-footer:hover {
     background-color: var(--color-secondary);
+}
+
+.sidebar-toggle-icon {
+    cursor: pointer;
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+}
+
+.search_icon_hidden {
+    position: absolute;
+    left: 10px;
+
 }
