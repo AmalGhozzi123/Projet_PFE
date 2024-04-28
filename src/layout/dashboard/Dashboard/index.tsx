@@ -66,10 +66,10 @@ export const Dashboard = () => {
       setTotalProducts(products.length);
       setNewProductsCount(newProductsSet.size);
       setModifiedProductsCount(modifiedProductsSet.size);
- 
+      
 
-      drawNewProductsChart(products);
 
+      drawModifiedProductsChart(products);
 
       drawCharts(products);
     } catch (error) {
@@ -82,70 +82,30 @@ export const Dashboard = () => {
   };
 
 
-  const  drawAvailabilityChart  = (products: Product[]) => {
-    const competitorsStats: Record<string, { inStock: number, outOfStock: number, onOrder: number }> = {};
-    products.forEach(product => {
-      if (!competitorsStats[product.Company]) {
-        competitorsStats[product.Company] = { inStock: 0, outOfStock: 0, onOrder: 0 };
-      }
-      if (product.Stock === "En stock") {
-        competitorsStats[product.Company].inStock++;
-      } else if (product.Stock === "Sur commande") {
-        competitorsStats[product.Company].onOrder++;
-      } else {
-        competitorsStats[product.Company].outOfStock++;
-      }
-    });
-
-    const ctx = document.getElementById('competitorChart') as HTMLCanvasElement;
-    if (ctx) {
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: Object.keys(competitorsStats),
-          datasets: [{
-            label: 'En stock',
-            data: Object.values(competitorsStats).map(stats => stats.inStock),
-            backgroundColor: 'green'
-          }, {
-            label: 'Hors stock',
-            data: Object.values(competitorsStats).map(stats => stats.outOfStock),
-            backgroundColor: 'red'
-          }, {
-            label: 'Sur commande',
-            data: Object.values(competitorsStats).map(stats => stats.onOrder),
-            backgroundColor: 'orange'
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-    }
-  };
-
-  const drawNewProductsChart = (products: Product[]) => {
-    const newProductsPerDay: Record<string, number> = {};
+ 
+ 
+  const drawModifiedProductsChart = (products: Product[]) => {
+    const modifiedProductsPerDay: Record<string, number> = {};
     products.forEach((product: Product) => {
-      const ajoutDate = product.DateAjout ? new Date(product.DateAjout).toDateString() : "";
-      newProductsPerDay[ajoutDate] = (newProductsPerDay[ajoutDate] || 0) + 1;
+      if (product.Modifications && product.Modifications.length > 0) {
+        product.Modifications.forEach(mod => {
+          const modifDate = mod.dateModification ? new Date(mod.dateModification).toDateString() : "";
+          modifiedProductsPerDay[modifDate] = (modifiedProductsPerDay[modifDate] || 0) + 1;
+        });
+      }
     });
 
-    const ctx = document.getElementById('newProductsChart') as HTMLCanvasElement;
+    const ctx = document.getElementById('modifiedProductsChart') as HTMLCanvasElement;
     if (ctx) {
       new Chart(ctx, {
         type: 'line',
         data: {
-          labels: Object.keys(newProductsPerDay),
+          labels: Object.keys(modifiedProductsPerDay),
           datasets: [
             {
-              label: 'Nouveaux Produits ',
-              data: Object.values(newProductsPerDay),
-              borderColor: 'blue',
+              label: 'Produits Modifiés ',
+              data: Object.values(modifiedProductsPerDay),
+              borderColor: 'purple',
               fill: false
             }
           ]
@@ -160,7 +120,6 @@ export const Dashboard = () => {
       });
     }
   };
-
 
  
 
@@ -208,11 +167,11 @@ export const Dashboard = () => {
             value={unavailableProductsCount}
             icon="/icons/product.svg"
           />
-     
+          
+   
           <div>
-            <canvas id="newProductsChart" width="400" height="200"></canvas>
+            <canvas id="modifiedProductsChart" width="400" height="200"></canvas>
           </div>
-      
        
         </div>
       </div>
