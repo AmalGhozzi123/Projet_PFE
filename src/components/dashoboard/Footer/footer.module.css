@@ -1,0 +1,21 @@
+.dashboard_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 1.5em;
+    background-color: var(--color-white);
+    gap: 1em;
+
+}
+
+.dashboard_footer>span {
+    font-size: 0.9em;
+    font-weight: 400;
+    color: var(--color-black);
+    margin-top: 900px;
+}
+
+.dashboard_footer>span>a {
+    font-weight: 700;
+    color: var(--color-primary);
+}
