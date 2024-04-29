@@ -1,0 +1,93 @@
+/* page Productdetail.css */
+.productDetails {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  margin-left: -1450px;
+  margin-top: -55px;
+}
+
+.productImage {
+  width: 1800px;
+  height: 500px;
+  margin-left: 100px;
+}
+
+.productInfo {
+  flex: 2;
+  background-color: #eef1f4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 10px 5px 8px rgba(0, 0, 0, 0.1);
+  height: 700px;
+  border-color: #041172;
+}
+
+.productContainer {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 20px;
+}
+
+.imageChartContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.chartContainer {
+  margin-left: 50px;
+  font-family: Georgia, serif;
+}
+
+.ConsulterButton {
+  padding: 20px 20px;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  position: relative;
+  background-color: #041172;
+  transition: all .2s;
+  overflow: hidden;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px -0px 0px 0px rgba(242, 242, 191, 0.5), 0px 0px 0px 0px rgba(39, 200, 255, .5);
+  font-family: Georgia, serif;
+  margin-top: -30px;
+}
+
+
+.ConsulterButton a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+
+.ConsulterButton::after {
+  content: '';
+  width: 400px;
+  height: 400px;
+
+  background-image: linear-gradient(225deg, #26caf8 0%, #e1ee27 50%, #c625d0 100%);
+  z-index: -1;
+  transition: all .5s;
+}
+
+.ConsulterButton:hover::after {
+  transform: rotate(150deg);
+}
+
+.ConsulterButton:hover {
+  transform: translate(0, -6px);
+  box-shadow: 10px -10px 25px 0px rgba(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
+}

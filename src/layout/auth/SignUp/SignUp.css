@@ -1,0 +1,116 @@
+/* SignUp.css */
+
+.sign-up-form {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    font-family: Georgia, serif;
+  }
+  
+  .input-container {
+    position: relative;
+    margin-bottom: 15px;
+  }
+ 
+
+/* Style du titre */
+.title {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    margin-bottom: 20px;
+    color: #050e43; 
+    font-weight: bold;
+  }
+ 
+/* Style de l'icône home */
+.home-icon {
+    width: 50px; 
+    height: 25px;
+    margin-top: 10px;
+    color:#050e43;
+  }
+  .error-message {
+    color: red;
+    display: flex;
+    align-items: center;
+}
+
+.error-icon {
+    margin-right: 5px; /* Ajustez la marge selon vos préférences */
+}
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #ccc;
+  }
+  
+  input {
+    width: calc(100% - 30px);
+    padding: 10px 30px 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+  }
+  /* CSS pour la boîte de dialogue */
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 900px;
+  height:250px;
+  max-width: 80%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dialog p {
+  margin-bottom: 20px;
+}
+
+.dialog button {
+  background-color: rgb(7, 24, 79);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 70px;
+  margin-left: 30px;
+}
+
+.dialog button:hover {
+  background-color: #111f7e;
+}
+.dialog h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+  button {
+    width: 90%;
+    padding: 10px;
+    background-color: rgb(7, 24, 79);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 15px;
+    font-family: Georgia, serif;
+    margin-left: 5px;
+  }
+  
+  button:hover {
+    background-color: #111f7e;
+  }
+  

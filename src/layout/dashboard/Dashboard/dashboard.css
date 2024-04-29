@@ -1,0 +1,22 @@
+.graph-container {
+  background: white;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  height: auto;
+}
+
+.graph-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 10px;
+}

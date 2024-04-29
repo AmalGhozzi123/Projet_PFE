@@ -1,0 +1,48 @@
+nav {
+  display: flex;
+  justify-content: center; /* Center the pagination nav within its container */
+  align-items: center; /* Vertically center if needed */
+}
+
+.pagination {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Ensures horizontal layout */
+  align-items: center; /* Aligns links within the list */
+}
+
+.pagination li {
+  margin: 0 5px; /* Provides spacing between pagination items */
+}
+
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  background-color: #ffffff; /* Ensures background color for all states except active/disabled */
+  cursor: pointer; /* Ensures it's clear that links are interactive */
+}
+
+.pagination a:hover {
+  background-color: #eee; /* Hover state background color */
+}
+
+.pagination a[aria-current='page'],
+.pagination a[aria-disabled='true'] {
+  color: white;
+  background-color: #007bff;
+  pointer-events: none; /* Disables interaction */
+  cursor: default; /* Shows default cursor instead of pointer */
+}
+
+.visuallyhidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* Ensures the content does not wrap */
+  border: 0;
+}

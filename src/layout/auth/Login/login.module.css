@@ -1,0 +1,109 @@
+/* login.module.css */
+
+.login_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--color-primary);
+    font-family: Georgia, serif;
+}
+
+.login_form {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #eff53a;
+    font-family: Georgia, serif;
+    position: relative; /* Ajoutez cette ligne pour permettre le positionnement relatif des icônes */
+}
+
+.icon {
+    position: absolute;
+    top: 40%;
+    left: 10px; /* Ajustez la position horizontale selon vos besoins */
+    transform: translateY(-50%);
+    color: #051e52; /* Couleur des icônes */
+    font-size: 18px; /* Taille des icônes */
+}
+
+.input_container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.login_form>h1 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-block: 0;
+    color: rgb(6, 40, 141);
+}
+
+.login_form>form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.login_form>form>button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-family: Georgia, serif;
+    width: 400px;
+    height:40px;
+    margin-left: 130px;
+
+}
+
+.disabled_button {
+    background-color: var(--color-gray);
+    color: var(--color-black);
+    cursor: not-allowed;
+}
+
+.enabled_button {
+    background-color: var(--color-primary);
+    color: white;
+    cursor: pointer;
+}
+
+.login_form input[type="text"],
+.login_form input[type="password"] {
+    width: calc(100% - 30px);
+    padding: 8px 30px 8px 40px; /* Ajustez les valeurs de padding pour aligner les icônes correctement */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-family: Georgia, serif;
+    height:50px;
+}
+
+.login-page-inputs button {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-family: Georgia, serif;
+}
+
+.register_prompt {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register_prompt a {
+    color: #0066cc; /* Choisissez une couleur qui correspond à votre thème */
+    text-decoration: none;
+}
+
+.register_prompt a:hover {
+    text-decoration: underline;
+}
